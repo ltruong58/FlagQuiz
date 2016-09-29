@@ -9,7 +9,7 @@
     tools:context="edu.orangecoastcollege.cs273.ltruong58.flagquiz.QuizActivityFragment"
     tools:showIn="@layout/activity_quiz"
     android:orientation="vertical"
-    android:id="@+id/quizLinearLayout">
+    android:id="@+id/quizFragment">
 
     <TextView
         android:layout_width="wrap_content"
