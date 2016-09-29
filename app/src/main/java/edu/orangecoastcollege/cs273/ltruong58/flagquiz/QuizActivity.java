@@ -6,11 +6,8 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -61,7 +58,7 @@ public class QuizActivity extends AppCompatActivity {
         super.onStart();
 
 
-        // need ask what is quizFragment
+
         if (preferencesChanged) {
             QuizActivityFragment quizFragment = (QuizActivityFragment) getSupportFragmentManager().findFragmentById(R.id.quizFragment);
             quizFragment.updateGuessRows(PreferenceManager.getDefaultSharedPreferences(this));

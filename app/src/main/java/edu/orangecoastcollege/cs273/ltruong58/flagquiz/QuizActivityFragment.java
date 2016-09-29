@@ -246,15 +246,15 @@ public class QuizActivityFragment extends Fragment {
 
     private String getCountryName(String filename) {
         String countryName;
-        countryName = filename.substring(filename.indexOf('-', filename.length() - 1));
-        return countryName;
+        countryName = filename.substring(filename.indexOf('-') + 1);
+        return countryName.replace('_', ' ');
     }
 
     private void disableButtons() {
-        for(LinearLayout row: guessLinearLayouts) {
-            for(int column = 0; column < row.getChildCount(); column++) {
-                Button button = (Button) row.getChildAt(column);
-                button.setEnabled(false);
+        for(int row = 0; row < guessRows; row++) {
+            LinearLayout guessRow = guessLinearLayouts[row];
+            for(int column = 0; column < guessRow.getChildCount(); column++) {
+                guessRow.getChildAt(column).setEnabled(false);
             }
         }
     }
