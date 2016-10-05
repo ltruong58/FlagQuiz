@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.os.Handler;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,7 +26,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 
 /**
@@ -74,22 +74,7 @@ public class QuizActivityFragment extends Fragment {
         fileNameList = new ArrayList<>();
         quizCountriesList = new ArrayList<>();
         random = new SecureRandom();
-        handler = new Handler() {
-            @Override
-            public void publish(LogRecord record) {
-
-            }
-
-            @Override
-            public void flush() {
-
-            }
-
-            @Override
-            public void close() throws SecurityException {
-
-            }
-        };
+        handler = new Handler();
 
         //
         questionNumberTextView = (TextView) view.findViewById(R.id.questionNumberTextView);
@@ -230,16 +215,31 @@ public class QuizActivityFragment extends Fragment {
                             builder.setMessage(getString(R.string.results, totalGuesses, (1000 / (double) totalGuesses)));
 
                             builder.setPositiveButton(R.string.reset_quiz, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    resetQuiz();
-                                }
-                            }
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            resetQuiz();
+                                        }
+                                    }
                             );
-                            return  builder.create();
+                            return builder.create();
                         }
                     };
+                    quizResults.setCancelable(false);
+                    quizResults.show(getFragmentManager(), "quiz results");
                 }
+                else {
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadNextFlag();
+                        }
+                    }, 2000);
+                }
+            }
+            else {
+
+                answerTextView.setText(R.string.incorrect_answer);
+                answerTextView.setTextColor(getResources().getColor(R.color.incorrect_answer,getContext().getTheme()));
             }
         }
     };
