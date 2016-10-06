@@ -6,8 +6,8 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
+import android.app.DialogFragment;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,7 +34,7 @@ import java.util.logging.LogRecord;
 public class QuizActivityFragment extends Fragment {
 
     private static final String TAG = "FlagQuiz Activity";
-    private static final int FLAGS_IN_QUIZ = 10;
+    private static final int FLAGS_IN_QUIZ = 2;
 
     private List<String> fileNameList;
     private List<String> quizCountriesList;

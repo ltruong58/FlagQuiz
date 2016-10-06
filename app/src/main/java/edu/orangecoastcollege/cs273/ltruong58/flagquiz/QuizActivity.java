@@ -60,7 +60,7 @@ public class QuizActivity extends AppCompatActivity {
 
 
         if (preferencesChanged) {
-            QuizActivityFragment quizFragment = (QuizActivityFragment) getSupportFragmentManager().findFragmentById(R.id.quizFragment);
+            QuizActivityFragment quizFragment = (QuizActivityFragment) getFragmentManager().findFragmentById(R.id.quizFragment);
             quizFragment.updateGuessRows(PreferenceManager.getDefaultSharedPreferences(this));
             quizFragment.updateRegions(PreferenceManager.getDefaultSharedPreferences(this));
             quizFragment.resetQuiz();
@@ -104,7 +104,7 @@ public class QuizActivity extends AppCompatActivity {
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
             preferencesChanged = true;
 
-            QuizActivityFragment quizFragment = (QuizActivityFragment) getSupportFragmentManager().findFragmentById(R.id.quizFragment);
+            QuizActivityFragment quizFragment = (QuizActivityFragment) getFragmentManager().findFragmentById(R.id.quizFragment);
 
             if(key.equals(CHOICES)) {
                 quizFragment.updateGuessRows(sharedPreferences);
